@@ -22,8 +22,8 @@ except ValueError:
 if p1ChoiceInt >= 1 and p1ChoiceInt <= 7:
     print('You have chosen column ' + p1Choice)
 else:
-    print('There\'s no column ' + p1Choice + '. Please enter a number between 1 and 7.\n')  # Handle what to print when no user input. Loop back to p1Choice input. 
-
+    print('There\'s no column ' + p1Choice + '. Please enter a number between 1 and 7.\n')  # Handle what to print when no user input. Loop back to p1Choice input.
+hello
 # row = ''
 #
 # for i in range(len(columns)):
