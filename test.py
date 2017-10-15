@@ -2,30 +2,48 @@ columns=[[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
 print('\nLet\'s play Connect Four!\n')
 
-print(' 1    2    3    4    5    6    7')
-for a in columns:
-    print(' ---  ---  ---  ---  ---  ---  ---')
-    print('| ' + ' || '.join(a) + ' |')
-    print(' ---  ---  ---  ---  ---  ---  ---')
-print()
+def printBoard():
+    print(' 1    2    3    4    5    6    7')
+    for a in columns:
+        print(' ---  ---  ---  ---  ---  ---  ---')
+        print('| ' + ' || '.join(a) + ' |')
+        print(' ---  ---  ---  ---  ---  ---  ---')
+    print()
 
-print('Player 1, your token is O, player two your token is X\n')
+printBoard()
 
 p1Choice = input('Player 1, which column would you like to choose? \n')
 
-try:
-    p1ChoiceInt =int(p1Choice)
-except ValueError:
-    print('You didn\'t enter a number!')
-    p1ChoiceInt=0
+def p1choose():
+    p1Choice = input('Player 1, which column would you like to choose? \n')
 
-if p1ChoiceInt >= 1 and p1ChoiceInt <= 7:
-    print('You have chosen column ' + p1Choice)
-else:
-    print('There\'s no column ' + p1Choice + '. Please enter a number between 1 and 7.\n')  # Handle what to print when no user input. Loop back to p1Choice input.
-hello
-# row = ''
-#
+invalidInput = True
+while(invalidInput)
+    try:
+        p1ChoiceInt =int(p1Choice)
+    except ValueError:
+        print('You didn\'t enter a number!')
+        p1choose()
+        continue
+    if p1Choice == "":
+        print('You didn\'t enter a number. Please enter a number between 1 and 7.\n')
+        p1choose()
+    if p1ChoiceInt >= 1 and p1ChoiceInt <= 7:
+        print('You have chosen column ' + p1Choice)
+        break
+    else:
+        print('There\'s no column ' + p1Choice + '. Please enter a number between 1 and 7.\n') # if user enters wrong number more than once, loop breaks.
+        invalidInput = p1Choice == "" or (p1ChoiceInt >= 1 and p1ChoiceInt <= 7) # if user enters empty string and then wrong number, loop continues with ValueError and keeps looping
+        p1choose()
+
+
+
+# print('Player 1, your token is O, player two your token is X\n')
+
+# if p1Choice is None:
+#     print('You didn\'t enter a number!')
+
+# row =
 # for i in range(len(columns)):
 # #     for row = row + x
 #       x in columns[i]:
