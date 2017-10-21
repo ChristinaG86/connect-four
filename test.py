@@ -1,6 +1,6 @@
 columns=[[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ']]
 
-print('\nLet\'s play Connect Four!\n')
+print('\nLet\'s play Connect Four!\n') 
 
 def printBoard():
     print(' 1    2    3    4    5    6    7')
@@ -10,31 +10,60 @@ def printBoard():
         print(' ---  ---  ---  ---  ---  ---  ---')
     print()
 
-printBoard()
-
-p1Choice = input('Player 1, which column would you like to choose? \n')
+printBoard() 
 
 def p1choose():
+    global p1Choice
     p1Choice = input('Player 1, which column would you like to choose? \n')
 
-invalidInput = True
-while(invalidInput)
+p1choose()
+
+while(True):
     try:
-        p1ChoiceInt =int(p1Choice)
-    except ValueError:
-        print('You didn\'t enter a number!')
+        p1ChoiceInt =int(p1Choice) 
+    except ValueError: 
+        print('You didn\'t enter a number! Please enter a number between 1 and 7.\n')
         p1choose()
         continue
     if p1Choice == "":
         print('You didn\'t enter a number. Please enter a number between 1 and 7.\n')
         p1choose()
-    if p1ChoiceInt >= 1 and p1ChoiceInt <= 7:
+        continue
+    if p1ChoiceInt >= 1 and p1ChoiceInt <= 7: 
         print('You have chosen column ' + p1Choice)
         break
     else:
-        print('There\'s no column ' + p1Choice + '. Please enter a number between 1 and 7.\n') # if user enters wrong number more than once, loop breaks.
-        invalidInput = p1Choice == "" or (p1ChoiceInt >= 1 and p1ChoiceInt <= 7) # if user enters empty string and then wrong number, loop continues with ValueError and keeps looping
+        print('There\'s no column ' + p1Choice + '. Please enter a number between 1 and 7.\n') 
         p1choose()
+        continue
+
+
+
+
+
+# invalidInput = True
+# while(invalidInput): 
+#     try:
+#         p1ChoiceInt =int(p1Choice) # check if user input is a number 
+#     except ValueError: # print error if not 
+#         print('You didn\'t enter a number!')
+#         p1choose() # and call p1choose function again
+#         # need something here to say 'begin loop again'
+#     if p1Choice == "": # check if user enters an empty string
+#         print('You didn\'t enter a number. Please enter a number between 1 and 7.\n')
+#         p1choose() # call p1choose function again
+#         # loop again
+#     if p1ChoiceInt >= 1 and p1ChoiceInt <= 7:
+#         print('You have chosen column ' + p1Choice)
+#         break
+#     else:
+#         print('There\'s no column ' + p1Choice + '. Please enter a number between 1 and 7.\n') 
+#         invalidInput = p1Choice == "" or (p1ChoiceInt < 1 and p1ChoiceInt > 7) 
+#         p1choose()  
+        # loop again                                          
+
+# if user enters valid input, add token to selected column array
+
 
 
 
