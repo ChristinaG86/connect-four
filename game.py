@@ -1,14 +1,22 @@
-columns=[[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ']]
+columns=[[' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' ']]
 
 print('\nLet\'s play Connect Four!\n') 
 
 def printBoard():
-    print(' 1    2    3    4    5    6    7')
-    for a in columns:
+    print('  1    2    3    4    5    6    7')
+    for i in range(0, len(columns[0])): 
         print(' ---  ---  ---  ---  ---  ---  ---')
-        print('| ' + ' || '.join(a) + ' |')
-        print(' ---  ---  ---  ---  ---  ---  ---')
-    print()
+        for j in range(0, len(columns)): 
+            print('| ', end='')
+            print(columns[len(columns) -j -1] [i], end='')
+            print(' |', end='')
+        print('\n ---  ---  ---  ---  ---  ---  ---')
 
 printBoard() 
 
@@ -36,3 +44,7 @@ while(True):
         print('There\'s no column ' + p1Choice + '. Please enter a number between 1 and 7.\n') 
         p1choose()
         continue
+
+def updateBoard(colNum, playerLetter):
+    column = columns[colNum]
+    # walk backwards through columns and put playerLetter in first available space
