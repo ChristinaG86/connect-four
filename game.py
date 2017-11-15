@@ -36,7 +36,8 @@ def updateBoard(choice, playerToken):
             columns[y][choice -1] = playerToken
             break
         elif(y == 0):
-            print('Column is full!')
+            print('Column is full!') 
+            # need to finish this
 
 currentPlayer = 1
 while(True):
