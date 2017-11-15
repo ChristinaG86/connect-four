@@ -10,41 +10,58 @@ print('\nLet\'s play Connect Four!\n')
 
 def printBoard():
     print('  1    2    3    4    5    6    7')
-    for i in range(0, len(columns[0])): 
+    for y in range(0, len(columns[0])): 
         print(' ---  ---  ---  ---  ---  ---  ---')
-        for j in range(0, len(columns)): 
+        for x in range(0, len(columns)): 
             print('| ', end='')
-            print(columns[len(columns) -j -1] [i], end='')
+            print(columns[y][x], end='')
             print(' |', end='')
         print('\n ---  ---  ---  ---  ---  ---  ---')
 
 printBoard() 
 
-def p1choose():
-    global p1Choice
-    p1Choice = input('Player 1, which column would you like to choose? \n')
+print('\nPlayer 1, your token is X. Player 2, your token is O.\n')
 
-p1choose()
+def chooseColumn():
+    global choice
+    prompt = 'Player {}, which column would you like to choose? \n'.format(currentPlayer)
+    choice = input(prompt)
+    print()
 
+def updateBoard(choice, playerToken):
+    # for loop is iterating from bottom of the board to the top
+    for y in range(len(columns[0]) -1, -1, -1):
+        # placing token in board where space is available
+        if columns[y][choice -1] == ' ':
+            columns[y][choice -1] = playerToken
+            break
+        elif(y == 0):
+            print('Column is full!')
+
+currentPlayer = 1
 while(True):
+    chooseColumn()
     try:
-        p1ChoiceInt =int(p1Choice) 
+        choiceInt = int(choice) 
     except ValueError: 
         print('You didn\'t enter a number! Please enter a number between 1 and 7.\n')
-        p1choose()
+        chooseColumn()
         continue
-    if p1Choice == "":
+    if choice == "":
         print('You didn\'t enter a number. Please enter a number between 1 and 7.\n')
-        p1choose()
+        chooseColumn()
         continue
-    if p1ChoiceInt >= 1 and p1ChoiceInt <= 7: 
-        print('You have chosen column ' + p1Choice)
-        break
+    if choiceInt >= 1 and choiceInt <= 7: 
+        print('You have chosen column ' + choice + '\n')
+        if currentPlayer == 1:
+            playerToken = 'X'
+            currentPlayer = 2
+        else:
+            playerToken = 'O'
+            currentPlayer = 1
+        updateBoard(choiceInt, playerToken)
     else:
-        print('There\'s no column ' + p1Choice + '. Please enter a number between 1 and 7.\n') 
-        p1choose()
+        print('There\'s no column ' + choice + '. Please enter a number between 1 and 7.\n') 
+        chooseColumn()
         continue
-
-def updateBoard(colNum, playerLetter):
-    column = columns[colNum]
-    # walk backwards through columns and put playerLetter in first available space
+    printBoard()
