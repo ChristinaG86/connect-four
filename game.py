@@ -17,6 +17,7 @@ def printBoard():
             print(columns[y][x], end='')
             print(' |', end='')
         print('\n ---  ---  ---  ---  ---  ---  ---')
+    # y axis needs to be 6 not 7
 
 printBoard() 
 
@@ -48,7 +49,7 @@ while(True):
         print('You didn\'t enter a number! Please enter a number between 1 and 7.\n')
         chooseColumn()
         continue
-    if choice == "":
+    if choice == '':
         print('You didn\'t enter a number. Please enter a number between 1 and 7.\n')
         chooseColumn()
         continue
@@ -66,3 +67,4 @@ while(True):
         chooseColumn()
         continue
     printBoard()
+#  error in loop - doesn't print error message more than once
