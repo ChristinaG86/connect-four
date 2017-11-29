@@ -35,10 +35,11 @@ def updateBoard(choice, playerToken):
         # placing token in board where space is available
         if columns[y][choice -1] == ' ':
             columns[y][choice -1] = playerToken
+            # checkVertical()
             break
         elif(y == 0):
-            print('Column is full!') 
-            # need to finish this
+            print('This column is full! Please try a different column.') 
+            print()
 
 currentPlayer = 1
 while(True):
@@ -47,11 +48,6 @@ while(True):
         choiceInt = int(choice) 
     except ValueError: 
         print('You didn\'t enter a number! Please enter a number between 1 and 7.\n')
-        chooseColumn()
-        continue
-    if choice == '':
-        print('You didn\'t enter a number. Please enter a number between 1 and 7.\n')
-        chooseColumn()
         continue
     if choiceInt >= 1 and choiceInt <= 7: 
         print('You have chosen column ' + choice + '\n')
@@ -60,11 +56,26 @@ while(True):
             currentPlayer = 2
         else:
             playerToken = 'O'
+
             currentPlayer = 1
         updateBoard(choiceInt, playerToken)
     else:
         print('There\'s no column ' + choice + '. Please enter a number between 1 and 7.\n') 
-        chooseColumn()
         continue
-    printBoard()
-#  error in loop - doesn't print error message more than once
+    printBoard() # don't print when column full
+
+# position = [1, 0]
+nextY = position[1] + 1
+nextX = position[0] 
+
+if columns[nextY][nextX] == playerToken and columns[nextY + 1][nextX] == playerToken
+# keep adding + 2 + 3
+
+# def checkVertical(playerToken, position):
+#     if columns[x][0] and columns[y][0] == playerToken:
+#         if columns[x][0] and columns[y][1] == playerToken:
+#             if columns[x][0] and columns[y][2] == playerToken:
+#                 if columns[x][0] and columns[y][3] == playerToken:
+#                     print('You won!')
+        
+
