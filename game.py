@@ -23,6 +23,38 @@ printBoard()
 
 print('\nPlayer 1, your token is X. Player 2, your token is O.\n')
 
+def checkHorizontalWin():
+    for row in columns:
+        result = checkRowForWin(row)
+        if result == False:
+            continue
+        else:
+            print('You win!')
+            break
+
+def checkRowForWin():
+    for i in range(len(row)):
+        cell1 = row[i]
+        cell2 = row[i + 1]
+        cell3 = row[i + 2]
+        cell4 = row[i + 3]
+        fourCells = [cell1, cell2, cell3, cell4]
+        checkCellForWin(fourCells)
+
+#     for row in columns:
+#         for i in range(0, 3):
+#             if row[i] == 'X':
+#                 return True
+
+def checkFourCellsForWin(fourCells):
+    if len(set(fourCells)) == 1:
+        return True
+    else:
+        return False
+
+print checkFourCellsForWin([X, X, X, X])
+
+
 def chooseColumn():
     global choice
     prompt = 'Player {}, which column would you like to choose? \n'.format(currentPlayer)
@@ -35,7 +67,9 @@ def updateBoard(choice, playerToken):
         # placing token in board where space is available
         if columns[y][choice -1] == ' ':
             columns[y][choice -1] = playerToken
-            # checkVertical()
+            checkHorizontalWin()
+            # checkVerticalWin()
+            # checkDiagonalWin()
             break
         elif(y == 0):
             print('This column is full! Please try a different column.') 
@@ -63,19 +97,3 @@ while(True):
         print('There\'s no column ' + choice + '. Please enter a number between 1 and 7.\n') 
         continue
     printBoard() # don't print when column full
-
-# position = [1, 0]
-nextY = position[1] + 1
-nextX = position[0] 
-
-if columns[nextY][nextX] == playerToken and columns[nextY + 1][nextX] == playerToken
-# keep adding + 2 + 3
-
-# def checkVertical(playerToken, position):
-#     if columns[x][0] and columns[y][0] == playerToken:
-#         if columns[x][0] and columns[y][1] == playerToken:
-#             if columns[x][0] and columns[y][2] == playerToken:
-#                 if columns[x][0] and columns[y][3] == playerToken:
-#                     print('You won!')
-        
-
